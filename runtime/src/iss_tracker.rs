@@ -259,6 +259,7 @@ impl<T: Trait> Module<T> {
         //   r#"{"cdai":{"usd": 7064.16}}"#;
         debug::info!("111111 {:?}", value);
         let position = value.get_object()[2].1.get_object().clone();
+        debug::info!("position {:?}", position);
         let lat = position[0].1.get_string().parse::<f64>().expect("could not parse position json");
         let lng = position[1].1.get_string().parse::<f64>().expect("could not parse position json");
         debug::debug!("POSITION lat:{} lng:{}", lat, lng);

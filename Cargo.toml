@@ -2,7 +2,7 @@
 authors = ['Alekspickle']
 build = 'build.rs'
 edition = '2018'
-name = 'iss-tracker-node'
+name = 'iss-tracking-node'
 version = '2.0.0'
 
 [build-dependencies]
@@ -130,5 +130,5 @@ version = '2.0.0'
 members = ['runtime']
 
 [[bin]]
-name = 'iss-tracker'
+name = 'iss-tracking-node'
 path = 'src/main.rs'
