@@ -1,7 +1,7 @@
 [parachain]
 name = "ISS Node"
 description = "ISS Tracking Node"
-version = "v0.1.0"
+version = "v0.2.0"
 
 [chainspec]
 version = "0.0.1"
