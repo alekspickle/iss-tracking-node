@@ -12,13 +12,13 @@ pub use sc_cli::{VersionInfo, IntoExit, error};
 
 fn main() -> Result<(), cli::error::Error> {
 	let version = VersionInfo {
-		name: "Substrate Node",
+		name: "ISS Tracker Node",
 		commit: env!("VERGEN_SHA_SHORT"),
 		version: env!("CARGO_PKG_VERSION"),
-		executable_name: "node-template",
-		author: "Anonymous",
-		description: "Template Node",
-		support_url: "support.anonymous.an",
+		executable_name: "tracker",
+		author: "Alekspickle",
+		description: "ISS Tracker Node",
+		support_url: "alekspickle@gmail.com",
 	};
 
 	cli::run(std::env::args(), cli::Exit, version)

@@ -1,3 +1,22 @@
+[package]
+authors = ['Alekspickle']
+edition = '2018'
+name = 'node-runtime'
+version = '0.2.1'
+
+[build-dependencies.wasm-builder-runner]
+git = 'https://github.com/paritytech/substrate.git'
+package = 'substrate-wasm-builder-runner'
+rev = '3e651110aa06aa835790df63410a29676243fc54'
+version = '1.0.4'
+
+[dependencies]
+safe-mix = { default-features = false, version = '1.0.0'}
+serde = {features = ['alloc'], default-features = false, optional = true, version = '1.0.101'}
+simple-json = {git = 'https://github.com/jimmychu0807/simple-json', version = '0.1.5', default_features = false}
+num-traits = { version = "0.2.8", default-features = false }
+failure_derive = "0.1.7"
+
 [dependencies.aura]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
@@ -50,15 +69,6 @@ git = 'https://github.com/paritytech/substrate.git'
 package = 'pallet-randomness-collective-flip'
 rev = '3e651110aa06aa835790df63410a29676243fc54'
 version = '2.0.0'
-
-[dependencies.safe-mix]
-default-features = false
-version = '1.0.0'
-
-[dependencies.serde]
-features = ['derive']
-optional = true
-version = '1.0.101'
 
 [dependencies.sp-api]
 default-features = false
@@ -189,13 +199,3 @@ std = [
     'transaction-payment/std',
 ]
 
-[package]
-authors = ['Anonymous']
-edition = '2018'
-name = 'node-template-runtime'
-version = '2.0.0'
-[build-dependencies.wasm-builder-runner]
-git = 'https://github.com/paritytech/substrate.git'
-package = 'substrate-wasm-builder-runner'
-rev = '3e651110aa06aa835790df63410a29676243fc54'
-version = '1.0.4'
