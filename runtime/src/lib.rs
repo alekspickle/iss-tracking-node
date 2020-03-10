@@ -269,7 +269,7 @@ construct_runtime!(
 		Balances: balances,
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
-		ISSTracker: iss_tracker::{Module, Call, Storage, Event<T>},
+		ISSTracker: iss_tracker::{Module, Call, Storage, Event<T>,  ValidateUnsigned},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 	}
 );
