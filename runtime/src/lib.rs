@@ -63,8 +63,8 @@ pub type Hash = sp_core::H256;
 /// Digest item type.
 pub type DigestItem = generic::DigestItem<Hash>;
 
-/// Used for the module rock in `./rock.rs`
-mod rock;
+/// Used for the module iss_tracker in `./iss_tracker.rs`
+mod iss_tracker;
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
@@ -92,8 +92,8 @@ pub mod opaque {
 
 /// This runtime version.
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: create_runtime_str!("node-rock"),
-	impl_name: create_runtime_str!("node-rock"),
+	spec_name: create_runtime_str!("iss-tracker-node"),
+	impl_name: create_runtime_str!("iss-tracker-node"),
 	authoring_version: 1,
 	spec_version: 1,
 	impl_version: 1,
@@ -235,8 +235,24 @@ impl sudo::Trait for Runtime {
 	type Proposal = Call;
 }
 
-impl rock::Trait for Runtime {
+type SubmitTransaction = system::offchain::TransactionSubmitter<
+	iss_tracker::crypto::Public,
+	Runtime,
+	UncheckedExtrinsic
+>;
+
+parameter_types! {
+	pub const GracePeriod: u64 = 5;
+	pub const UnsignedInterval: u32 = 128;
+	pub const BlockFetchPeriod: u32 = 2;
+}
+
+impl iss_tracker::Trait for Runtime {
 	type Event = Event;
+	type Call = Call;
+	type SubmitUnsignedTransaction = SubmitTransaction;
+	type UnsignedInterval = UnsignedInterval;
+	type BlockFetchPeriod = BlockFetchPeriod;
 }
 
 construct_runtime!(
@@ -253,8 +269,7 @@ construct_runtime!(
 		Balances: balances,
 		TransactionPayment: transaction_payment::{Module, Storage},
 		Sudo: sudo,
-		// Used for the module rock in `./rock.rs`
-		Rock: rock::{Module, Call, Storage, Event<T>},
+		ISSTracker: iss_tracker::{Module, Call, Storage, Event<T>},
 		RandomnessCollectiveFlip: randomness_collective_flip::{Module, Call, Storage},
 	}
 );
