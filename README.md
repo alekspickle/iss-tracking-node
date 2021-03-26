@@ -2,7 +2,7 @@
 
 The most interesting file is [this one](https://github.com/alekspickle/iss-tracking-node/blob/master/runtime/src/iss_tracker.rs).
 
-# pArityt template info
+# Parity template info
 
 A new FRAME-based Substrate node, ready for hacking.
 
